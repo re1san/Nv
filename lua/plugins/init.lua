@@ -5,7 +5,7 @@ local default_plugins = {
   "nvim-lua/plenary.nvim",
 
   {
-    "NvChad/base46",
+    "re1san/Base46",
     branch = "v2.0",
     build = function()
       require("base46").load_all_highlights()
@@ -82,7 +82,7 @@ local default_plugins = {
     end,
   },
 
-  -- git stuff
+  -- Git Stuff
   {
     "lewis6991/gitsigns.nvim",
     event = "User FilePost",
@@ -95,7 +95,7 @@ local default_plugins = {
     end,
   },
 
-  -- lsp stuff
+  -- LSP Stuff
   {
     "williamboman/mason.nvim",
     cmd = { "Mason", "MasonInstall", "MasonInstallAll", "MasonUpdate" },
@@ -125,13 +125,13 @@ local default_plugins = {
     end,
   },
 
-  -- load luasnips + cmp related in insert mode only
+  -- Load luasnips + cmp related in insert mode only
   {
     "hrsh7th/nvim-cmp",
     event = "InsertEnter",
     dependencies = {
       {
-        -- snippet plugin
+        -- Snippet plugin
         "L3MON4D3/LuaSnip",
         dependencies = "rafamadriz/friendly-snippets",
         opts = { history = true, updateevents = "TextChanged,TextChangedI" },
@@ -140,7 +140,7 @@ local default_plugins = {
         end,
       },
 
-      -- autopairing of (){}[] etc
+      -- Autopairing of (){}[] etc
       {
         "windwp/nvim-autopairs",
         opts = {
@@ -150,13 +150,13 @@ local default_plugins = {
         config = function(_, opts)
           require("nvim-autopairs").setup(opts)
 
-          -- setup cmp for autopairs
+          -- Setup cmp for autopairs
           local cmp_autopairs = require "nvim-autopairs.completion.cmp"
           require("cmp").event:on("confirm_done", cmp_autopairs.on_confirm_done())
         end,
       },
 
-      -- cmp sources plugins
+      -- Cmp sources plugins
       {
         "saadparwaiz1/cmp_luasnip",
         "hrsh7th/cmp-nvim-lua",
@@ -176,12 +176,12 @@ local default_plugins = {
   {
     "numToStr/Comment.nvim",
     keys = {
-      { "gcc", mode = "n", desc = "Comment toggle current line" },
-      { "gc", mode = { "n", "o" }, desc = "Comment toggle linewise" },
-      { "gc", mode = "x", desc = "Comment toggle linewise (visual)" },
-      { "gbc", mode = "n", desc = "Comment toggle current block" },
-      { "gb", mode = { "n", "o" }, desc = "Comment toggle blockwise" },
-      { "gb", mode = "x", desc = "Comment toggle blockwise (visual)" },
+      { "gcc", mode = "n",          desc = "Comment toggle current line" },
+      { "gc",  mode = { "n", "o" }, desc = "Comment toggle linewise" },
+      { "gc",  mode = "x",          desc = "Comment toggle linewise (visual)" },
+      { "gbc", mode = "n",          desc = "Comment toggle current block" },
+      { "gb",  mode = { "n", "o" }, desc = "Comment toggle blockwise" },
+      { "gb",  mode = "x",          desc = "Comment toggle blockwise (visual)" },
     },
     init = function()
       require("core.utils").load_mappings "comment"
@@ -191,7 +191,7 @@ local default_plugins = {
     end,
   },
 
-  -- file managing , picker etc
+  -- File managing , Picker etc
   {
     "nvim-tree/nvim-tree.lua",
     cmd = { "NvimTreeToggle", "NvimTreeFocus" },
@@ -222,7 +222,7 @@ local default_plugins = {
       local telescope = require "telescope"
       telescope.setup(opts)
 
-      -- load extensions
+      -- Load extensions
       for _, ext in ipairs(opts.extensions_list) do
         telescope.load_extension(ext)
       end

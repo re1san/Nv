@@ -21,7 +21,7 @@ M.remove_disabled_keys = function(chadrc_mappings, default_mappings)
     return default_mappings
   end
 
-  -- store keys in a array with true value to compare
+  -- Store keys in a array with true value to compare
   local keys_to_disable = {}
   for _, mappings in pairs(chadrc_mappings) do
     for mode, section_keys in pairs(mappings) do
@@ -35,12 +35,12 @@ M.remove_disabled_keys = function(chadrc_mappings, default_mappings)
     end
   end
 
-  -- make a copy as we need to modify default_mappings
+  -- Make a copy as we need to modify default_mappings
   for section_name, section_mappings in pairs(default_mappings) do
     for mode, mode_mappings in pairs(section_mappings) do
       mode_mappings = (type(mode_mappings) == "table" and mode_mappings) or {}
       for k, _ in pairs(mode_mappings) do
-        -- if key if found then remove from default_mappings
+        -- If key if found then remove from default_mappings
         if keys_to_disable[mode] and keys_to_disable[mode][k] then
           default_mappings[section_name][mode][k] = nil
         end
@@ -63,7 +63,7 @@ M.load_mappings = function(section, mapping_opt)
       for mode, mode_values in pairs(section_values) do
         local default_opts = merge_tb("force", { mode = mode }, mapping_opt or {})
         for keybind, mapping_info in pairs(mode_values) do
-          -- merge default + user opts
+          -- Merge default + user opts
           local opts = merge_tb("force", default_opts, mapping_info.opts or {})
 
           mapping_info.opts, opts.mode = nil, nil
@@ -97,7 +97,7 @@ M.lazy_load = function(plugin)
       if condition then
         vim.api.nvim_del_augroup_by_name("BeLazyOnFileOpen" .. plugin)
 
-        -- dont defer for treesitter as it will show slow highlighting
+        -- Dont defer for treesitter as it will show slow highlighting
         -- This deferring only happens only when we do "nvim filename"
         if plugin ~= "nvim-treesitter" then
           vim.schedule(function()

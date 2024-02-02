@@ -4,11 +4,11 @@ local M = {}
 
 M.general = {
   i = {
-    -- go to  beginning and end
+    -- Go to beginning and end
     ["<C-b>"] = { "<ESC>^i", "Beginning of line" },
     ["<C-e>"] = { "<End>", "End of line" },
 
-    -- navigate within insert mode
+    -- Navigate within insert mode
     ["<C-h>"] = { "<Left>", "Move left" },
     ["<C-l>"] = { "<Right>", "Move right" },
     ["<C-j>"] = { "<Down>", "Move down" },
@@ -17,32 +17,32 @@ M.general = {
 
   n = {
     ["<Esc>"] = { "<cmd> noh <CR>", "Clear highlights" },
-    -- switch between windows
+    -- Switch between windows
     ["<C-h>"] = { "<C-w>h", "Window left" },
     ["<C-l>"] = { "<C-w>l", "Window right" },
     ["<C-j>"] = { "<C-w>j", "Window down" },
     ["<C-k>"] = { "<C-w>k", "Window up" },
 
-    -- save
+    -- Save
     ["<C-s>"] = { "<cmd> w <CR>", "Save file" },
 
     -- Copy all
     ["<C-c>"] = { "<cmd> %y+ <CR>", "Copy whole file" },
 
-    -- line numbers
+    -- Line numbers
     ["<leader>n"] = { "<cmd> set nu! <CR>", "Toggle line number" },
     ["<leader>rn"] = { "<cmd> set rnu! <CR>", "Toggle relative number" },
 
     -- Allow moving the cursor through wrapped lines with j, k, <Up> and <Down>
     -- http://www.reddit.com/r/vim/comments/2k4cbr/problem_with_gj_and_gk/
-    -- empty mode is same as using <cmd> :map
-    -- also don't use g[j|k] when in operator pending mode, so it doesn't alter d, y or c behaviour
+    -- Empty mode is same as using <cmd> :map
+    -- Also don't use g[j|k] when in operator pending mode, so it doesn't alter d, y or c behaviour
     ["j"] = { 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', "Move down", opts = { expr = true } },
     ["k"] = { 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', "Move up", opts = { expr = true } },
     ["<Up>"] = { 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', "Move up", opts = { expr = true } },
     ["<Down>"] = { 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', "Move down", opts = { expr = true } },
 
-    -- new buffer
+    -- New buffer
     ["<leader>b"] = { "<cmd> enew <CR>", "New buffer" },
     ["<leader>ch"] = { "<cmd> NvCheatsheet <CR>", "Mapping cheatsheet" },
 
@@ -78,7 +78,7 @@ M.tabufline = {
   plugin = true,
 
   n = {
-    -- cycle through buffers
+    -- Cycle through buffers
     ["<tab>"] = {
       function()
         require("nvchad.tabufline").tabuflineNext()
@@ -93,7 +93,7 @@ M.tabufline = {
       "Goto prev buffer",
     },
 
-    -- close buffer + hide terminal buffer
+    -- Close buffer + Hide terminal buffer
     ["<leader>x"] = {
       function()
         require("nvchad.tabufline").close_buffer()
@@ -106,7 +106,7 @@ M.tabufline = {
 M.comment = {
   plugin = true,
 
-  -- toggle comment in both modes
+  -- Toggle comment in both modes
   n = {
     ["<leader>/"] = {
       function()
@@ -257,10 +257,10 @@ M.nvimtree = {
   plugin = true,
 
   n = {
-    -- toggle
+    -- Toggle
     ["<C-n>"] = { "<cmd> NvimTreeToggle <CR>", "Toggle nvimtree" },
 
-    -- focus
+    -- Focus
     ["<leader>e"] = { "<cmd> NvimTreeFocus <CR>", "Focus nvimtree" },
   },
 }
@@ -269,7 +269,7 @@ M.telescope = {
   plugin = true,
 
   n = {
-    -- find
+    -- Find
     ["<leader>ff"] = { "<cmd> Telescope find_files <CR>", "Find files" },
     ["<leader>fa"] = { "<cmd> Telescope find_files follow=true no_ignore=true hidden=true <CR>", "Find all" },
     ["<leader>fw"] = { "<cmd> Telescope live_grep <CR>", "Live grep" },
@@ -278,14 +278,14 @@ M.telescope = {
     ["<leader>fo"] = { "<cmd> Telescope oldfiles <CR>", "Find oldfiles" },
     ["<leader>fz"] = { "<cmd> Telescope current_buffer_fuzzy_find <CR>", "Find in current buffer" },
 
-    -- git
+    -- Git
     ["<leader>cm"] = { "<cmd> Telescope git_commits <CR>", "Git commits" },
     ["<leader>gt"] = { "<cmd> Telescope git_status <CR>", "Git status" },
 
-    -- pick a hidden term
+    -- Pick a hidden term
     ["<leader>pt"] = { "<cmd> Telescope terms <CR>", "Pick hidden term" },
 
-    -- theme switcher
+    -- Theme switcher
     ["<leader>th"] = { "<cmd> Telescope themes <CR>", "Nvchad themes" },
 
     ["<leader>ma"] = { "<cmd> Telescope marks <CR>", "telescope bookmarks" },
@@ -296,7 +296,7 @@ M.nvterm = {
   plugin = true,
 
   t = {
-    -- toggle in terminal mode
+    -- Toggle in terminal mode
     ["<A-i>"] = {
       function()
         require("nvterm.terminal").toggle "float"
@@ -320,7 +320,7 @@ M.nvterm = {
   },
 
   n = {
-    -- toggle in normal mode
+    -- Toggle in normal mode
     ["<A-i>"] = {
       function()
         require("nvterm.terminal").toggle "float"
@@ -342,7 +342,7 @@ M.nvterm = {
       "Toggle vertical term",
     },
 
-    -- new
+    -- New
     ["<leader>h"] = {
       function()
         require("nvterm.terminal").new "horizontal"
