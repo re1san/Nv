@@ -1,4 +1,5 @@
 local M = {}
+-- local stats = require("lazy").stats() -- Module not found error, will fix later
 
 M.options = {
   nvchad_branch = "v2.0",
@@ -46,9 +47,9 @@ M.ui = {
     overriden_modules = nil,
   },
 
-  -- NvDash (dashboard)
+  -- NvDash (Dashboard)
   nvdash = {
-    load_on_startup = true,
+    load_on_startup = false,
 
     header = {
       "           ▄ ▄                   ",
@@ -61,15 +62,20 @@ M.ui = {
       "█▄█ ▄ █▄▄█▄▄█ █ ▄▄█ █ ▄ █ █▄█▄█ █",
       "    █▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄█ █▄█▄▄▄█    ",
     },
-
+    message = {
+      "[ ━━━━━━ ❖  ━━━━━━ ]",
+    },
     buttons = {
       { "  Find File", "Spc f f", "Telescope find_files" },
       { "󰈚  Recent Files", "Spc f o", "Telescope oldfiles" },
-      { "󰈭  Find Word", "Spc f w", "Telescope live_grep" },
-      { "  Bookmarks", "Spc m a", "Telescope marks" },
-      { "  Themes", "Spc t h", "Telescope themes" },
+      --{ "󰈭  Find Word", "Spc f w", "Telescope live_grep" },
+      --{ "  Bookmarks", "Spc m a", "Telescope marks" },
+      --{ "  Themes", "Spc t h", "Telescope themes" },
       { "  Mappings", "Spc c h", "NvCheatsheet" },
     },
+    --footer = {
+    --  "Loaded " .. stats.count .. " plugins",
+    --}
   },
 
   cheatsheet = { theme = "grid" }, -- simple/grid
