@@ -61,4 +61,19 @@ require("lspconfig").lua_ls.setup {
   },
 }
 
+-- Setup other LSP's
+local servers = {
+	"clangd",
+	"cssls",
+	"html",
+	"tsserver",
+}
+
+for _, lsp in ipairs(servers) do
+	require("lspconfig")[lsp].setup {
+		on_attach = M.on_attach,
+		capabilities = M.capabilities,
+	}
+end
+
 return M
